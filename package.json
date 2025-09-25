@@ -20,7 +20,7 @@
   },
  "scripts": {
   "start": "craco start",
-  "build": "node node_modules/@craco/craco/bin/craco.js build",
+  "build": "craco build",
   "test": "craco test"
 }
 ,
