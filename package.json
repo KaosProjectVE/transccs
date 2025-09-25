@@ -18,11 +18,12 @@
     "tailwindcss": "^3.3.2",
   "@craco/craco": "^7.1.0"
   },
-  "scripts": {
-    "start": "craco start",
-    "build": "craco build",
-    "test": "craco test"
-  },
+ "scripts": {
+  "start": "craco start",
+  "build": "node node_modules/@craco/craco/bin/craco.js build",
+  "test": "craco test"
+}
+,
   "browserslist": {
     "production": [
       ">0.2%",
