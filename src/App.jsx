@@ -191,14 +191,9 @@ function DatePicker({ date, onChange }) {
 }
 
 
-function ProyectoForm({ initial, onSubmit, onDelete }) {
-  const [form, setForm] = useState(() => ({
-    ...initial,
-    parroquia: initial.parroquia && PARROQUIAS.includes(initial.parroquia)
-      ? initial.parroquia
-      : PARROQUIAS[0],
-    instancias: initial.instancias || [],
-  }));
+function ProyectoForm({ initial, onSubmit, onDelete, setOpen }) {
+  const [form, setForm] = useState({ ...initial, categorias: initial.categorias || [] });
+  // resto igual...
 
   useEffect(() => {
     setForm({
@@ -331,17 +326,21 @@ function ProyectoForm({ initial, onSubmit, onDelete }) {
           onChange={(event) => setField("progreso", Number(event.target.value))}
         />
       </div>
-      <div className="md:col-span-2 mt-2 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-        {onDelete && (
-          <Button type="button" variant="destructive" onClick={onDelete} className="w-full sm:w-auto">
-            <Trash2 className="mr-2 h-4 w-4" />
-            Eliminar
-          </Button>
-        )}
-        <Button type="submit" className="w-full sm:w-auto">
-          Guardar
-        </Button>
-      </div>
+     <div className="md:col-span-2 flex justify-between mt-2">
+  {onDelete && (
+    <Button type="button" variant="destructive" onClick={onDelete}>
+      <Trash2 className="h-4 w-4" />
+      Eliminar
+    </Button>
+  )}
+  <div className="flex gap-2">
+    <Button type="button" variant="outline" onClick={() => setOpen(false)}>
+      Cancelar
+    </Button>
+    <Button type="submit">Guardar</Button>
+  </div>
+</div>
+
     </form>
   );
 }
